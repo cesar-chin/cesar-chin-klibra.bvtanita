@@ -15,7 +15,8 @@ namespace BodyVisionKl
         private int age;
         private string genre;
         private string birthDate;
-     
+        private string high;
+
         public int Id   
         {
             get { return id; }   
@@ -56,6 +57,12 @@ namespace BodyVisionKl
         {
             get { return birthDate; }
             set { birthDate = value; }
+        }
+
+        public string High
+        {
+            get { return high; }
+            set { high = value; }
         }
     }
 }

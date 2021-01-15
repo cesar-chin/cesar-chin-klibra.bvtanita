@@ -28,6 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Inicio));
             this.label1 = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
@@ -46,6 +51,26 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txtFechaNacimiento = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.textHigh = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.dataGridPatient = new System.Windows.Forms.DataGridView();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hora = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.genero = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.edad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.altura = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.peso = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.imc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.grasa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.musculo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.osea = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.visceral = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.energia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.metabolica = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.agua = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridPatient)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -61,8 +86,9 @@
             // txtNombre
             // 
             this.txtNombre.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtNombre.Enabled = false;
             this.txtNombre.Location = new System.Drawing.Point(142, 32);
-            this.txtNombre.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtNombre.Margin = new System.Windows.Forms.Padding(2);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(263, 13);
             this.txtNombre.TabIndex = 1;
@@ -70,8 +96,9 @@
             // txtEdad
             // 
             this.txtEdad.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtEdad.Location = new System.Drawing.Point(287, 58);
-            this.txtEdad.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtEdad.Enabled = false;
+            this.txtEdad.Location = new System.Drawing.Point(292, 58);
+            this.txtEdad.Margin = new System.Windows.Forms.Padding(2);
             this.txtEdad.Name = "txtEdad";
             this.txtEdad.Size = new System.Drawing.Size(34, 13);
             this.txtEdad.TabIndex = 3;
@@ -89,8 +116,9 @@
             // txtFecha
             // 
             this.txtFecha.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtFecha.Enabled = false;
             this.txtFecha.Location = new System.Drawing.Point(142, 106);
-            this.txtFecha.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtFecha.Margin = new System.Windows.Forms.Padding(2);
             this.txtFecha.Name = "txtFecha";
             this.txtFecha.Size = new System.Drawing.Size(122, 13);
             this.txtFecha.TabIndex = 5;
@@ -108,8 +136,9 @@
             // txtArchivo
             // 
             this.txtArchivo.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtArchivo.Location = new System.Drawing.Point(142, 128);
-            this.txtArchivo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtArchivo.Enabled = false;
+            this.txtArchivo.Location = new System.Drawing.Point(404, 108);
+            this.txtArchivo.Margin = new System.Windows.Forms.Padding(2);
             this.txtArchivo.Name = "txtArchivo";
             this.txtArchivo.Size = new System.Drawing.Size(401, 13);
             this.txtArchivo.TabIndex = 7;
@@ -117,7 +146,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(27, 126);
+            this.label4.Location = new System.Drawing.Point(289, 106);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(87, 13);
@@ -126,8 +155,8 @@
             // 
             // btnProcesar
             // 
-            this.btnProcesar.Location = new System.Drawing.Point(445, 316);
-            this.btnProcesar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnProcesar.Location = new System.Drawing.Point(1295, 528);
+            this.btnProcesar.Margin = new System.Windows.Forms.Padding(2);
             this.btnProcesar.Name = "btnProcesar";
             this.btnProcesar.Size = new System.Drawing.Size(106, 32);
             this.btnProcesar.TabIndex = 8;
@@ -137,8 +166,8 @@
             // 
             // btnMostrar
             // 
-            this.btnMostrar.Location = new System.Drawing.Point(334, 316);
-            this.btnMostrar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnMostrar.Location = new System.Drawing.Point(1185, 528);
+            this.btnMostrar.Margin = new System.Windows.Forms.Padding(2);
             this.btnMostrar.Name = "btnMostrar";
             this.btnMostrar.Size = new System.Drawing.Size(106, 32);
             this.btnMostrar.TabIndex = 9;
@@ -153,8 +182,8 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(114, 316);
-            this.btnCancelar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCancelar.Location = new System.Drawing.Point(965, 528);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(106, 32);
             this.btnCancelar.TabIndex = 10;
@@ -164,19 +193,21 @@
             // 
             // btnData
             // 
-            this.btnData.Location = new System.Drawing.Point(224, 316);
-            this.btnData.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnData.Location = new System.Drawing.Point(1075, 528);
+            this.btnData.Margin = new System.Windows.Forms.Padding(2);
             this.btnData.Name = "btnData";
             this.btnData.Size = new System.Drawing.Size(106, 32);
             this.btnData.TabIndex = 11;
             this.btnData.Text = "Data";
             this.btnData.UseVisualStyleBackColor = true;
+            this.btnData.Click += new System.EventHandler(this.btnData_Click);
             // 
             // txtGenero
             // 
             this.txtGenero.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtGenero.Enabled = false;
             this.txtGenero.Location = new System.Drawing.Point(142, 81);
-            this.txtGenero.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtGenero.Margin = new System.Windows.Forms.Padding(2);
             this.txtGenero.Name = "txtGenero";
             this.txtGenero.Size = new System.Drawing.Size(98, 13);
             this.txtGenero.TabIndex = 13;
@@ -194,8 +225,9 @@
             // txtFechaNacimiento
             // 
             this.txtFechaNacimiento.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtFechaNacimiento.Enabled = false;
             this.txtFechaNacimiento.Location = new System.Drawing.Point(142, 58);
-            this.txtFechaNacimiento.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtFechaNacimiento.Margin = new System.Windows.Forms.Padding(2);
             this.txtFechaNacimiento.Name = "txtFechaNacimiento";
             this.txtFechaNacimiento.Size = new System.Drawing.Size(98, 13);
             this.txtFechaNacimiento.TabIndex = 15;
@@ -210,12 +242,178 @@
             this.label6.TabIndex = 14;
             this.label6.Text = "Fecha de nacimiento";
             // 
+            // textHigh
+            // 
+            this.textHigh.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textHigh.Enabled = false;
+            this.textHigh.Location = new System.Drawing.Point(311, 81);
+            this.textHigh.Margin = new System.Windows.Forms.Padding(2);
+            this.textHigh.Name = "textHigh";
+            this.textHigh.Size = new System.Drawing.Size(34, 13);
+            this.textHigh.TabIndex = 17;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(256, 81);
+            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(51, 13);
+            this.label10.TabIndex = 16;
+            this.label10.Text = "Altura (m)";
+            // 
+            // dataGridPatient
+            // 
+            this.dataGridPatient.AllowUserToDeleteRows = false;
+            this.dataGridPatient.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.dataGridPatient.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridPatient.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridPatient.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridPatient.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridPatient.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.fecha,
+            this.hora,
+            this.genero,
+            this.edad,
+            this.altura,
+            this.peso,
+            this.imc,
+            this.grasa,
+            this.musculo,
+            this.osea,
+            this.visceral,
+            this.energia,
+            this.metabolica,
+            this.agua});
+            this.dataGridPatient.Location = new System.Drawing.Point(30, 161);
+            this.dataGridPatient.Name = "dataGridPatient";
+            this.dataGridPatient.ReadOnly = true;
+            this.dataGridPatient.Size = new System.Drawing.Size(1369, 345);
+            this.dataGridPatient.TabIndex = 18;
+            this.dataGridPatient.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::BodyVisionKl.Properties.Resources.klibra;
+            this.pictureBox1.Location = new System.Drawing.Point(1284, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(115, 123);
+            this.pictureBox1.TabIndex = 19;
+            this.pictureBox1.TabStop = false;
+            // 
+            // fecha
+            // 
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            this.fecha.DefaultCellStyle = dataGridViewCellStyle3;
+            this.fecha.HeaderText = "Fecha";
+            this.fecha.Name = "fecha";
+            this.fecha.ReadOnly = true;
+            this.fecha.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.fecha.Width = 62;
+            // 
+            // hora
+            // 
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            this.hora.DefaultCellStyle = dataGridViewCellStyle4;
+            this.hora.HeaderText = "Hora";
+            this.hora.Name = "hora";
+            this.hora.ReadOnly = true;
+            // 
+            // genero
+            // 
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
+            this.genero.DefaultCellStyle = dataGridViewCellStyle5;
+            this.genero.HeaderText = "Genero";
+            this.genero.Name = "genero";
+            this.genero.ReadOnly = true;
+            // 
+            // edad
+            // 
+            this.edad.HeaderText = "Edad";
+            this.edad.Name = "edad";
+            this.edad.ReadOnly = true;
+            // 
+            // altura
+            // 
+            this.altura.HeaderText = "Altura";
+            this.altura.Name = "altura";
+            this.altura.ReadOnly = true;
+            // 
+            // peso
+            // 
+            this.peso.HeaderText = "Peso";
+            this.peso.Name = "peso";
+            this.peso.ReadOnly = true;
+            // 
+            // imc
+            // 
+            this.imc.HeaderText = "IMC";
+            this.imc.Name = "imc";
+            this.imc.ReadOnly = true;
+            // 
+            // grasa
+            // 
+            this.grasa.HeaderText = "% Grasa";
+            this.grasa.Name = "grasa";
+            this.grasa.ReadOnly = true;
+            // 
+            // musculo
+            // 
+            this.musculo.HeaderText = "M muscular";
+            this.musculo.Name = "musculo";
+            this.musculo.ReadOnly = true;
+            // 
+            // osea
+            // 
+            this.osea.HeaderText = "M osea";
+            this.osea.Name = "osea";
+            this.osea.ReadOnly = true;
+            // 
+            // visceral
+            // 
+            this.visceral.HeaderText = "G visceral";
+            this.visceral.Name = "visceral";
+            this.visceral.ReadOnly = true;
+            // 
+            // energia
+            // 
+            this.energia.HeaderText = "Energia";
+            this.energia.Name = "energia";
+            this.energia.ReadOnly = true;
+            // 
+            // metabolica
+            // 
+            this.metabolica.HeaderText = "Edad met";
+            this.metabolica.Name = "metabolica";
+            this.metabolica.ReadOnly = true;
+            // 
+            // agua
+            // 
+            this.agua.HeaderText = "% Agua";
+            this.agua.Name = "agua";
+            this.agua.ReadOnly = true;
+            // 
             // Inicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
+            this.AutoSize = true;
             this.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.ClientSize = new System.Drawing.Size(586, 368);
+            this.ClientSize = new System.Drawing.Size(1424, 611);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.dataGridPatient);
+            this.Controls.Add(this.textHigh);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.txtFechaNacimiento);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txtGenero);
@@ -234,12 +432,13 @@
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.MaximizeBox = false;
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Inicio";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Body Vision Klibra";
             this.Load += new System.EventHandler(this.Inicio_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridPatient)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -264,6 +463,24 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtFechaNacimiento;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox textHigh;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.DataGridView dataGridPatient;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fecha;
+        private System.Windows.Forms.DataGridViewTextBoxColumn hora;
+        private System.Windows.Forms.DataGridViewTextBoxColumn genero;
+        private System.Windows.Forms.DataGridViewTextBoxColumn edad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn altura;
+        private System.Windows.Forms.DataGridViewTextBoxColumn peso;
+        private System.Windows.Forms.DataGridViewTextBoxColumn imc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn grasa;
+        private System.Windows.Forms.DataGridViewTextBoxColumn musculo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn osea;
+        private System.Windows.Forms.DataGridViewTextBoxColumn visceral;
+        private System.Windows.Forms.DataGridViewTextBoxColumn energia;
+        private System.Windows.Forms.DataGridViewTextBoxColumn metabolica;
+        private System.Windows.Forms.DataGridViewTextBoxColumn agua;
     }
 }
 
