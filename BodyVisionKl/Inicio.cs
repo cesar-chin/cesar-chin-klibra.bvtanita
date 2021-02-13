@@ -9,6 +9,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using iText.Kernel.Pdf;
+using iText.Layout;
+using iText.Layout.Element;
+using iText.Layout.Properties;
+using Image = iText.Layout.Element.Image;
+
 namespace BodyVisionKl
 {    
     public partial class Inicio : Form
@@ -164,6 +170,165 @@ namespace BodyVisionKl
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void btnExportar(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Envía los datos a un archivo PDF para impresión...");
+
+            PdfWriter writer = new PdfWriter("E:\\temp\\demo.pdf");
+            PdfDocument pdf = new PdfDocument(writer);
+            Document document = new Document(pdf, iText.Kernel.Geom.PageSize.A4.Rotate());            
+
+            Paragraph header = new Paragraph("Estadísticas Body Tanita Klibra")
+               .SetTextAlignment(TextAlignment.CENTER)
+               .SetFontSize(20)
+               .SetBackgroundColor(iText.Kernel.Colors.ColorConstants.GREEN);
+            document.Add(header);
+
+            Paragraph subheader = new Paragraph(txtNombre.Text)
+                .SetTextAlignment(TextAlignment.CENTER)
+                .SetFontSize(15)
+                .SetFontColor(iText.Kernel.Colors.ColorConstants.BLUE)
+                .SetBackgroundColor(iText.Kernel.Colors.ColorConstants.LIGHT_GRAY);
+            document.Add(subheader);
+
+            // Table
+            Table table = new Table(13, false);
+
+            Cell cell1 = new Cell(1, 1)               
+               .SetTextAlignment(TextAlignment.CENTER)
+               .Add(new Paragraph("Fecha"))
+               .SetBackgroundColor(iText.Kernel.Colors.ColorConstants.LIGHT_GRAY);
+               
+            Cell cell2 = new Cell(1, 1)               
+               .SetTextAlignment(TextAlignment.CENTER)
+               .Add(new Paragraph("Género"))
+               .SetBackgroundColor(iText.Kernel.Colors.ColorConstants.LIGHT_GRAY);
+            Cell cell3 = new Cell(1, 1)
+               .SetTextAlignment(TextAlignment.CENTER)
+               .Add(new Paragraph("Edad"))
+               .SetBackgroundColor(iText.Kernel.Colors.ColorConstants.LIGHT_GRAY);
+            Cell cell4 = new Cell(1, 1)
+               .SetTextAlignment(TextAlignment.CENTER)
+               .Add(new Paragraph("Altura"))
+               .SetBackgroundColor(iText.Kernel.Colors.ColorConstants.LIGHT_GRAY);
+            Cell cell5 = new Cell(1, 1)
+               .SetTextAlignment(TextAlignment.CENTER)
+               .Add(new Paragraph("Peso"))
+               .SetBackgroundColor(iText.Kernel.Colors.ColorConstants.LIGHT_GRAY); 
+            Cell cell6 = new Cell(1, 1)
+               .SetTextAlignment(TextAlignment.CENTER)
+               .Add(new Paragraph("IMC"))
+               .SetBackgroundColor(iText.Kernel.Colors.ColorConstants.LIGHT_GRAY);
+            Cell cell7 = new Cell(1, 1)
+               .SetTextAlignment(TextAlignment.CENTER)
+               .Add(new Paragraph("% Grasa"))
+               .SetBackgroundColor(iText.Kernel.Colors.ColorConstants.LIGHT_GRAY);
+            Cell cell8 = new Cell(1, 1)
+               .SetTextAlignment(TextAlignment.CENTER)
+               .Add(new Paragraph("Masa muscular"))
+               .SetBackgroundColor(iText.Kernel.Colors.ColorConstants.LIGHT_GRAY);
+            Cell cell9 = new Cell(1, 1)
+               .SetTextAlignment(TextAlignment.CENTER)
+               .Add(new Paragraph("Masa ósea"))
+               .SetBackgroundColor(iText.Kernel.Colors.ColorConstants.LIGHT_GRAY);
+            Cell cell10 = new Cell(1, 1)
+               .SetTextAlignment(TextAlignment.CENTER)
+               .Add(new Paragraph("Grasa visceral"))
+               .SetBackgroundColor(iText.Kernel.Colors.ColorConstants.LIGHT_GRAY);
+            Cell cell11 = new Cell(1, 1)
+               .SetTextAlignment(TextAlignment.CENTER)
+               .Add(new Paragraph("Energía"))
+               .SetBackgroundColor(iText.Kernel.Colors.ColorConstants.LIGHT_GRAY);
+            Cell cell12 = new Cell(1, 1)
+               .SetTextAlignment(TextAlignment.CENTER)
+               .Add(new Paragraph("Edad Metabólica"))
+               .SetBackgroundColor(iText.Kernel.Colors.ColorConstants.LIGHT_GRAY);
+            Cell cell13 = new Cell(1, 1)
+               .SetTextAlignment(TextAlignment.CENTER)
+               .Add(new Paragraph("% Agua"))
+               .SetBackgroundColor(iText.Kernel.Colors.ColorConstants.LIGHT_GRAY);
+
+            table.AddCell(cell1);
+            table.AddCell(cell2);
+            table.AddCell(cell3);
+            table.AddCell(cell4);
+            table.AddCell(cell5);
+            table.AddCell(cell6);
+            table.AddCell(cell7);
+            table.AddCell(cell8);
+            table.AddCell(cell9);
+            table.AddCell(cell10);
+            table.AddCell(cell11);
+            table.AddCell(cell12);
+            table.AddCell(cell13);            
+        
+            /*
+          
+
+            Cell cell21 = new Cell(1, 1)
+               .SetTextAlignment(TextAlignment.CENTER)
+               .Add(new Paragraph("v1"));
+            Cell cell22 = new Cell(1, 1)
+               .SetTextAlignment(TextAlignment.CENTER)
+               .Add(new Paragraph("v2"));
+            Cell cell23 = new Cell(1, 1)
+               .SetTextAlignment(TextAlignment.CENTER)
+               .Add(new Paragraph("v3"));
+
+
+            Cell cell31 = new Cell(1, 1)
+               .SetTextAlignment(TextAlignment.CENTER)
+               .Add(new Paragraph("v1"));
+            Cell cell32 = new Cell(1, 1)
+               .SetTextAlignment(TextAlignment.CENTER)
+               .Add(new Paragraph("v2"));
+            Cell cell33 = new Cell(1, 1)
+               .SetTextAlignment(TextAlignment.CENTER)
+               .Add(new Paragraph("v3"));
+
+
+            Cell cell41 = new Cell(1, 1)
+               .SetTextAlignment(TextAlignment.CENTER)
+               .Add(new Paragraph("v1"));
+            Cell cell42 = new Cell(1, 1)
+               .SetTextAlignment(TextAlignment.CENTER)
+               .Add(new Paragraph("v2"));
+            Cell cell43 = new Cell(1, 1)
+               .SetTextAlignment(TextAlignment.CENTER)
+               .Add(new Paragraph("v3"));
+
+            
+
+            table.AddCell(cell21);
+            table.AddCell(cell22);
+            table.AddCell(cell23);
+
+            table.AddCell(cell31);
+            table.AddCell(cell32);
+            table.AddCell(cell33);
+
+            table.AddCell(cell41);
+            table.AddCell(cell42);
+            table.AddCell(cell43);
+            */
+
+            document.Add(table);
+
+            // Add image
+            /*Image img = new Image(iText.IO.Image.ImageDataFactory
+            .Create(@"..\..\klibra.jpg"))
+            .SetTextAlignment(TextAlignment.CENTER);
+            document.Add(img);*/
+
+            document.Close();
+            MessageBox.Show("Archivo creado...");
         }
     }
     

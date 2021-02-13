@@ -54,7 +54,6 @@
             this.textHigh = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.dataGridPatient = new System.Windows.Forms.DataGridView();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.hora = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.genero = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -69,6 +68,8 @@
             this.energia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.metabolica = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.agua = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnImprimir = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridPatient)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -182,7 +183,7 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(965, 528);
+            this.btnCancelar.Location = new System.Drawing.Point(851, 528);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(106, 32);
@@ -301,15 +302,6 @@
             this.dataGridPatient.TabIndex = 18;
             this.dataGridPatient.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::BodyVisionKl.Properties.Resources.klibra;
-            this.pictureBox1.Location = new System.Drawing.Point(1284, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(115, 123);
-            this.pictureBox1.TabIndex = 19;
-            this.pictureBox1.TabStop = false;
-            // 
             // fecha
             // 
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
@@ -332,7 +324,7 @@
             // 
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
             this.genero.DefaultCellStyle = dataGridViewCellStyle5;
-            this.genero.HeaderText = "Genero";
+            this.genero.HeaderText = "Género";
             this.genero.Name = "genero";
             this.genero.ReadOnly = true;
             // 
@@ -392,7 +384,7 @@
             // 
             // metabolica
             // 
-            this.metabolica.HeaderText = "Edad met";
+            this.metabolica.HeaderText = "Edad metab";
             this.metabolica.Name = "metabolica";
             this.metabolica.ReadOnly = true;
             // 
@@ -402,6 +394,25 @@
             this.agua.Name = "agua";
             this.agua.ReadOnly = true;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::BodyVisionKl.Properties.Resources.klibra;
+            this.pictureBox1.Location = new System.Drawing.Point(1284, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(115, 123);
+            this.pictureBox1.TabIndex = 19;
+            this.pictureBox1.TabStop = false;
+            // 
+            // btnImprimir
+            // 
+            this.btnImprimir.Location = new System.Drawing.Point(966, 530);
+            this.btnImprimir.Name = "btnImprimir";
+            this.btnImprimir.Size = new System.Drawing.Size(99, 29);
+            this.btnImprimir.TabIndex = 20;
+            this.btnImprimir.Text = "Imprimir";
+            this.btnImprimir.UseVisualStyleBackColor = true;
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
+            // 
             // Inicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -410,6 +421,7 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.ClientSize = new System.Drawing.Size(1424, 611);
+            this.Controls.Add(this.btnImprimir);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.dataGridPatient);
             this.Controls.Add(this.textHigh);
@@ -481,6 +493,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn energia;
         private System.Windows.Forms.DataGridViewTextBoxColumn metabolica;
         private System.Windows.Forms.DataGridViewTextBoxColumn agua;
+        private System.Windows.Forms.Button btnImprimir;
     }
 }
 
