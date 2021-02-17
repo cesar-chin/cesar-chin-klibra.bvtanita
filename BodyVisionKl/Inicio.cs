@@ -21,6 +21,7 @@ namespace BodyVisionKl
     {
         private Patient patient = new Patient();
         private Helper helper = new Helper();
+        private string[] dataRows  = new string[] {};
 
         public Inicio()
         {
@@ -30,6 +31,7 @@ namespace BodyVisionKl
             btnData.Enabled = true;
         }
 
+        //Carga el archivo del paciente
         private void btnProcesar_Click(object sender, EventArgs e)
         {
             btnProcesar.Enabled = false;
@@ -50,7 +52,7 @@ namespace BodyVisionKl
             }
                 
         }
-
+        //Carga el perfil del paciente
         private void btnMostrar_Click(object sender, EventArgs e)
         {
             btnMostrar.Enabled = false;
@@ -84,13 +86,15 @@ namespace BodyVisionKl
             }                       
         }
 
+        //Carga los datos del paciente del paciente
         private void btnData_Click(object sender, EventArgs e)
         {
             btnData.Enabled = false;
             dlgArchivo.ShowDialog();
             txtArchivo.Text = dlgArchivo.FileName;
 
-            string[] lineas = File.ReadAllLines(dlgArchivo.FileName);
+            //string[] lineas = File.ReadAllLines(dlgArchivo.FileName);
+            dataRows = File.ReadAllLines(dlgArchivo.FileName);
 
             txtFecha.Text = File.GetLastWriteTime(dlgArchivo.FileName).ToString();
 
@@ -100,14 +104,14 @@ namespace BodyVisionKl
                 return;
             }
             //Create array of Data
-            Data[] pData = new Data[lineas.Count()];
-            for (byte i = 0; i < lineas.Count(); i++)
+            Data[] pData = new Data[dataRows.Count()];
+            for (byte i = 0; i < dataRows.Count(); i++)
                 pData[i] = new Data();
 
             int dataIndex = 0;
 
             //Read data from file and put in Data array.
-            foreach (var linea in lineas)            //Data file has many lines
+            foreach (var linea in dataRows)            //Data file has many lines
             {
                 var valores = linea.Split(',');
                 Console.WriteLine("Lectura de linea: " + linea);
@@ -143,6 +147,7 @@ namespace BodyVisionKl
            }
         }
 
+        //Limpia los datos
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             patient = new Patient();
@@ -178,10 +183,15 @@ namespace BodyVisionKl
         }
 
         private void btnImprimir_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Envía los datos a un archivo PDF para impresión...");
+        {            
+            if (dataRows.Length == 0) {
+                MessageBox.Show("Para imprimir se deben cargar datos...");
+                return;
+            }
 
-            PdfWriter writer = new PdfWriter("E:\\temp\\demo.pdf");
+            String dest = "/temp/demo.pdf";
+            
+            PdfWriter writer = new PdfWriter(dest);
             PdfDocument pdf = new PdfDocument(writer);
             Document document = new Document(pdf, iText.Kernel.Geom.PageSize.A4.Rotate());            
 
@@ -198,127 +208,183 @@ namespace BodyVisionKl
                 .SetBackgroundColor(iText.Kernel.Colors.ColorConstants.LIGHT_GRAY);
             document.Add(subheader);
 
-            // Table
+            //Table
             Table table = new Table(13, false);
 
-            Cell cell1 = new Cell(1, 1)               
+            Cell cell1; //Encabezado de la tabla
+
+            cell1 = new Cell(1, 1)               
                .SetTextAlignment(TextAlignment.CENTER)
                .Add(new Paragraph("Fecha"))
                .SetBackgroundColor(iText.Kernel.Colors.ColorConstants.LIGHT_GRAY);
-               
-            Cell cell2 = new Cell(1, 1)               
+            table.AddCell(cell1);
+
+            cell1 = new Cell(1, 1)               
                .SetTextAlignment(TextAlignment.CENTER)
                .Add(new Paragraph("Género"))
                .SetBackgroundColor(iText.Kernel.Colors.ColorConstants.LIGHT_GRAY);
-            Cell cell3 = new Cell(1, 1)
+            table.AddCell(cell1);
+
+            cell1 = new Cell(1, 1)
                .SetTextAlignment(TextAlignment.CENTER)
                .Add(new Paragraph("Edad"))
                .SetBackgroundColor(iText.Kernel.Colors.ColorConstants.LIGHT_GRAY);
-            Cell cell4 = new Cell(1, 1)
+            table.AddCell(cell1);
+
+            cell1 = new Cell(1, 1)
                .SetTextAlignment(TextAlignment.CENTER)
                .Add(new Paragraph("Altura"))
                .SetBackgroundColor(iText.Kernel.Colors.ColorConstants.LIGHT_GRAY);
-            Cell cell5 = new Cell(1, 1)
+            table.AddCell(cell1);
+
+            cell1 = new Cell(1, 1)
                .SetTextAlignment(TextAlignment.CENTER)
                .Add(new Paragraph("Peso"))
-               .SetBackgroundColor(iText.Kernel.Colors.ColorConstants.LIGHT_GRAY); 
-            Cell cell6 = new Cell(1, 1)
+               .SetBackgroundColor(iText.Kernel.Colors.ColorConstants.LIGHT_GRAY);
+            table.AddCell(cell1);
+
+            cell1 = new Cell(1, 1)
                .SetTextAlignment(TextAlignment.CENTER)
                .Add(new Paragraph("IMC"))
                .SetBackgroundColor(iText.Kernel.Colors.ColorConstants.LIGHT_GRAY);
-            Cell cell7 = new Cell(1, 1)
+            table.AddCell(cell1);
+
+            cell1 = new Cell(1, 1)
                .SetTextAlignment(TextAlignment.CENTER)
                .Add(new Paragraph("% Grasa"))
                .SetBackgroundColor(iText.Kernel.Colors.ColorConstants.LIGHT_GRAY);
-            Cell cell8 = new Cell(1, 1)
+            table.AddCell(cell1);
+
+            cell1 = new Cell(1, 1)
                .SetTextAlignment(TextAlignment.CENTER)
                .Add(new Paragraph("Masa muscular"))
                .SetBackgroundColor(iText.Kernel.Colors.ColorConstants.LIGHT_GRAY);
-            Cell cell9 = new Cell(1, 1)
+            table.AddCell(cell1);
+
+            cell1 = new Cell(1, 1)
                .SetTextAlignment(TextAlignment.CENTER)
                .Add(new Paragraph("Masa ósea"))
                .SetBackgroundColor(iText.Kernel.Colors.ColorConstants.LIGHT_GRAY);
-            Cell cell10 = new Cell(1, 1)
+            table.AddCell(cell1);
+
+            cell1 = new Cell(1, 1)
                .SetTextAlignment(TextAlignment.CENTER)
                .Add(new Paragraph("Grasa visceral"))
                .SetBackgroundColor(iText.Kernel.Colors.ColorConstants.LIGHT_GRAY);
-            Cell cell11 = new Cell(1, 1)
+            table.AddCell(cell1);
+
+            cell1 = new Cell(1, 1)
                .SetTextAlignment(TextAlignment.CENTER)
                .Add(new Paragraph("Energía"))
                .SetBackgroundColor(iText.Kernel.Colors.ColorConstants.LIGHT_GRAY);
-            Cell cell12 = new Cell(1, 1)
+            table.AddCell(cell1);
+
+            cell1 = new Cell(1, 1)
                .SetTextAlignment(TextAlignment.CENTER)
                .Add(new Paragraph("Edad Metabólica"))
                .SetBackgroundColor(iText.Kernel.Colors.ColorConstants.LIGHT_GRAY);
-            Cell cell13 = new Cell(1, 1)
+            table.AddCell(cell1);
+
+            cell1 = new Cell(1, 1)
                .SetTextAlignment(TextAlignment.CENTER)
                .Add(new Paragraph("% Agua"))
                .SetBackgroundColor(iText.Kernel.Colors.ColorConstants.LIGHT_GRAY);
-
             table.AddCell(cell1);
-            table.AddCell(cell2);
-            table.AddCell(cell3);
-            table.AddCell(cell4);
-            table.AddCell(cell5);
-            table.AddCell(cell6);
-            table.AddCell(cell7);
-            table.AddCell(cell8);
-            table.AddCell(cell9);
-            table.AddCell(cell10);
-            table.AddCell(cell11);
-            table.AddCell(cell12);
-            table.AddCell(cell13);            
-        
-            /*
-          
-
-            Cell cell21 = new Cell(1, 1)
-               .SetTextAlignment(TextAlignment.CENTER)
-               .Add(new Paragraph("v1"));
-            Cell cell22 = new Cell(1, 1)
-               .SetTextAlignment(TextAlignment.CENTER)
-               .Add(new Paragraph("v2"));
-            Cell cell23 = new Cell(1, 1)
-               .SetTextAlignment(TextAlignment.CENTER)
-               .Add(new Paragraph("v3"));
 
 
-            Cell cell31 = new Cell(1, 1)
-               .SetTextAlignment(TextAlignment.CENTER)
-               .Add(new Paragraph("v1"));
-            Cell cell32 = new Cell(1, 1)
-               .SetTextAlignment(TextAlignment.CENTER)
-               .Add(new Paragraph("v2"));
-            Cell cell33 = new Cell(1, 1)
-               .SetTextAlignment(TextAlignment.CENTER)
-               .Add(new Paragraph("v3"));
-
-
-            Cell cell41 = new Cell(1, 1)
-               .SetTextAlignment(TextAlignment.CENTER)
-               .Add(new Paragraph("v1"));
-            Cell cell42 = new Cell(1, 1)
-               .SetTextAlignment(TextAlignment.CENTER)
-               .Add(new Paragraph("v2"));
-            Cell cell43 = new Cell(1, 1)
-               .SetTextAlignment(TextAlignment.CENTER)
-               .Add(new Paragraph("v3"));
-
+            //Create array of Data
+            Data[] pData = new Data[dataRows.Count()];
+            for (byte i = 0; i < dataRows.Count(); i++)
+                pData[i] = new Data();
             
+            int dataIndex = 0;
 
-            table.AddCell(cell21);
-            table.AddCell(cell22);
-            table.AddCell(cell23);
+            //Read data from file and put in Data array.
+            foreach (var linea in dataRows)            //Data file has many lines
+            {
+                var valores = linea.Split(',');
+                Console.WriteLine("Lectura de linea: " + linea);
+                pData[dataIndex].Date = valores[13];                
+                pData[dataIndex].Genre = valores[19];
+                pData[dataIndex].Age = valores[21];
+                pData[dataIndex].High = valores[23];
+                pData[dataIndex].Weigth = valores[27];
+                pData[dataIndex].Imc = valores[29];
+                pData[dataIndex].Fat = valores[31];
+                pData[dataIndex].Muscle = valores[43];
+                pData[dataIndex].Bone = valores[55];
+                pData[dataIndex].Vis_fat = valores[57];
+                pData[dataIndex].Energy = valores[59];
+                pData[dataIndex].Met_age = valores[61];
+                pData[dataIndex].Water = valores[63];
 
-            table.AddCell(cell31);
-            table.AddCell(cell32);
-            table.AddCell(cell33);
+                Cell cell100;   //Valores de la tabla
 
-            table.AddCell(cell41);
-            table.AddCell(cell42);
-            table.AddCell(cell43);
-            */
+                cell100 = new Cell(1, 1)
+                   .SetTextAlignment(TextAlignment.CENTER)
+                   .Add(new Paragraph(pData[dataIndex].Date));
+                table.AddCell(cell100);
 
+                cell100 = new Cell(1, 1)
+                   .SetTextAlignment(TextAlignment.CENTER)
+                   .Add(new Paragraph(pData[dataIndex].Genre));
+                table.AddCell(cell100);
+                
+                cell100 = new Cell(1, 1)
+                   .SetTextAlignment(TextAlignment.CENTER)
+                   .Add(new Paragraph(pData[dataIndex].Age));
+                table.AddCell(cell100);
+
+                cell100 = new Cell(1, 1)
+                   .SetTextAlignment(TextAlignment.CENTER)
+                   .Add(new Paragraph(pData[dataIndex].High));
+                table.AddCell(cell100);
+
+                cell100 = new Cell(1, 1)
+                   .SetTextAlignment(TextAlignment.CENTER)
+                   .Add(new Paragraph(pData[dataIndex].Weigth));
+                table.AddCell(cell100);
+
+                cell100 = new Cell(1, 1)
+                   .SetTextAlignment(TextAlignment.CENTER)
+                   .Add(new Paragraph(pData[dataIndex].Imc));
+                table.AddCell(cell100);
+
+                cell100 = new Cell(1, 1)
+                   .SetTextAlignment(TextAlignment.CENTER)
+                   .Add(new Paragraph(pData[dataIndex].Fat));
+                table.AddCell(cell100);
+                
+                cell100 = new Cell(1, 1)
+                   .SetTextAlignment(TextAlignment.CENTER)
+                   .Add(new Paragraph(pData[dataIndex].Muscle));
+                table.AddCell(cell100);
+
+                cell100 = new Cell(1, 1)
+                   .SetTextAlignment(TextAlignment.CENTER)
+                   .Add(new Paragraph(pData[dataIndex].Bone));
+                table.AddCell(cell100);
+
+                cell100 = new Cell(1, 1)
+                   .SetTextAlignment(TextAlignment.CENTER)
+                   .Add(new Paragraph(pData[dataIndex].Vis_fat));
+                table.AddCell(cell100);
+
+                cell100 = new Cell(1, 1)
+                   .SetTextAlignment(TextAlignment.CENTER)
+                   .Add(new Paragraph(pData[dataIndex].Energy));
+                table.AddCell(cell100);
+
+                cell100 = new Cell(1, 1)
+                   .SetTextAlignment(TextAlignment.CENTER)
+                   .Add(new Paragraph(pData[dataIndex].Met_age));
+                table.AddCell(cell100);
+
+                cell100 = new Cell(1, 1)
+                   .SetTextAlignment(TextAlignment.CENTER)
+                   .Add(new Paragraph(pData[dataIndex].Water));
+                table.AddCell(cell100);
+            }           
             document.Add(table);
 
             // Add image
@@ -328,7 +394,10 @@ namespace BodyVisionKl
             document.Add(img);*/
 
             document.Close();
-            MessageBox.Show("Archivo creado...");
+            MessageBox.Show("Datos exportados exitosamente!");
+
+            File.Open(dest, FileMode.Open, FileAccess.Write, FileShare.None);
+            
         }
     }
     
