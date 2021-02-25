@@ -1,4 +1,7 @@
-﻿namespace BodyVisionKl
+﻿
+using System.Drawing.Printing;
+
+namespace BodyVisionKl
 {
     partial class Inicio
     {
@@ -6,7 +9,7 @@
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
-
+        
         /// <summary>
         /// Clean up any resources being used.
         /// </summary>
@@ -51,7 +54,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txtFechaNacimiento = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.textHigh = new System.Windows.Forms.TextBox();
+            this.txtHigh = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.dataGridPatient = new System.Windows.Forms.DataGridView();
             this.fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -70,6 +73,7 @@
             this.agua = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnImprimir = new System.Windows.Forms.Button();
+            this.printDocument2 = new System.Drawing.Printing.PrintDocument();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridPatient)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -80,7 +84,7 @@
             this.label1.Location = new System.Drawing.Point(27, 32);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(55, 13);
+            this.label1.Size = new System.Drawing.Size(61, 15);
             this.label1.TabIndex = 0;
             this.label1.Text = "Paciente: ";
             // 
@@ -110,7 +114,7 @@
             this.label2.Location = new System.Drawing.Point(256, 57);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(32, 13);
+            this.label2.Size = new System.Drawing.Size(36, 15);
             this.label2.TabIndex = 2;
             this.label2.Text = "Edad";
             // 
@@ -130,7 +134,7 @@
             this.label3.Location = new System.Drawing.Point(27, 105);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(92, 13);
+            this.label3.Size = new System.Drawing.Size(103, 15);
             this.label3.TabIndex = 4;
             this.label3.Text = "Fecha del archivo";
             // 
@@ -150,7 +154,7 @@
             this.label4.Location = new System.Drawing.Point(289, 106);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(87, 13);
+            this.label4.Size = new System.Drawing.Size(96, 15);
             this.label4.TabIndex = 6;
             this.label4.Text = "Archivo de datos";
             // 
@@ -219,7 +223,7 @@
             this.label5.Location = new System.Drawing.Point(27, 80);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(42, 13);
+            this.label5.Size = new System.Drawing.Size(48, 15);
             this.label5.TabIndex = 12;
             this.label5.Text = "Género";
             // 
@@ -239,19 +243,19 @@
             this.label6.Location = new System.Drawing.Point(27, 57);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(106, 13);
+            this.label6.Size = new System.Drawing.Size(122, 15);
             this.label6.TabIndex = 14;
             this.label6.Text = "Fecha de nacimiento";
             // 
-            // textHigh
+            // txtHigh
             // 
-            this.textHigh.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textHigh.Enabled = false;
-            this.textHigh.Location = new System.Drawing.Point(311, 81);
-            this.textHigh.Margin = new System.Windows.Forms.Padding(2);
-            this.textHigh.Name = "textHigh";
-            this.textHigh.Size = new System.Drawing.Size(34, 13);
-            this.textHigh.TabIndex = 17;
+            this.txtHigh.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtHigh.Enabled = false;
+            this.txtHigh.Location = new System.Drawing.Point(311, 81);
+            this.txtHigh.Margin = new System.Windows.Forms.Padding(2);
+            this.txtHigh.Name = "txtHigh";
+            this.txtHigh.Size = new System.Drawing.Size(34, 13);
+            this.txtHigh.TabIndex = 17;
             // 
             // label10
             // 
@@ -259,7 +263,7 @@
             this.label10.Location = new System.Drawing.Point(256, 81);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(51, 13);
+            this.label10.Size = new System.Drawing.Size(60, 15);
             this.label10.TabIndex = 16;
             this.label10.Text = "Altura (m)";
             // 
@@ -298,6 +302,7 @@
             this.dataGridPatient.Location = new System.Drawing.Point(30, 161);
             this.dataGridPatient.Name = "dataGridPatient";
             this.dataGridPatient.ReadOnly = true;
+            this.dataGridPatient.RowHeadersWidth = 51;
             this.dataGridPatient.Size = new System.Drawing.Size(1369, 345);
             this.dataGridPatient.TabIndex = 18;
             this.dataGridPatient.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
@@ -307,6 +312,7 @@
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
             this.fecha.DefaultCellStyle = dataGridViewCellStyle3;
             this.fecha.HeaderText = "Fecha";
+            this.fecha.MinimumWidth = 6;
             this.fecha.Name = "fecha";
             this.fecha.ReadOnly = true;
             this.fecha.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -317,82 +323,108 @@
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
             this.hora.DefaultCellStyle = dataGridViewCellStyle4;
             this.hora.HeaderText = "Hora";
+            this.hora.MinimumWidth = 6;
             this.hora.Name = "hora";
             this.hora.ReadOnly = true;
+            this.hora.Width = 125;
             // 
             // genero
             // 
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
             this.genero.DefaultCellStyle = dataGridViewCellStyle5;
             this.genero.HeaderText = "Género";
+            this.genero.MinimumWidth = 6;
             this.genero.Name = "genero";
             this.genero.ReadOnly = true;
+            this.genero.Width = 125;
             // 
             // edad
             // 
             this.edad.HeaderText = "Edad";
+            this.edad.MinimumWidth = 6;
             this.edad.Name = "edad";
             this.edad.ReadOnly = true;
+            this.edad.Width = 125;
             // 
             // altura
             // 
             this.altura.HeaderText = "Altura";
+            this.altura.MinimumWidth = 6;
             this.altura.Name = "altura";
             this.altura.ReadOnly = true;
+            this.altura.Width = 125;
             // 
             // peso
             // 
             this.peso.HeaderText = "Peso";
+            this.peso.MinimumWidth = 6;
             this.peso.Name = "peso";
             this.peso.ReadOnly = true;
+            this.peso.Width = 125;
             // 
             // imc
             // 
             this.imc.HeaderText = "IMC";
+            this.imc.MinimumWidth = 6;
             this.imc.Name = "imc";
             this.imc.ReadOnly = true;
+            this.imc.Width = 125;
             // 
             // grasa
             // 
             this.grasa.HeaderText = "% Grasa";
+            this.grasa.MinimumWidth = 6;
             this.grasa.Name = "grasa";
             this.grasa.ReadOnly = true;
+            this.grasa.Width = 125;
             // 
             // musculo
             // 
             this.musculo.HeaderText = "M muscular";
+            this.musculo.MinimumWidth = 6;
             this.musculo.Name = "musculo";
             this.musculo.ReadOnly = true;
+            this.musculo.Width = 125;
             // 
             // osea
             // 
             this.osea.HeaderText = "M osea";
+            this.osea.MinimumWidth = 6;
             this.osea.Name = "osea";
             this.osea.ReadOnly = true;
+            this.osea.Width = 125;
             // 
             // visceral
             // 
             this.visceral.HeaderText = "G visceral";
+            this.visceral.MinimumWidth = 6;
             this.visceral.Name = "visceral";
             this.visceral.ReadOnly = true;
+            this.visceral.Width = 125;
             // 
             // energia
             // 
             this.energia.HeaderText = "Energia";
+            this.energia.MinimumWidth = 6;
             this.energia.Name = "energia";
             this.energia.ReadOnly = true;
+            this.energia.Width = 125;
             // 
             // metabolica
             // 
             this.metabolica.HeaderText = "Edad metab";
+            this.metabolica.MinimumWidth = 6;
             this.metabolica.Name = "metabolica";
             this.metabolica.ReadOnly = true;
+            this.metabolica.Width = 125;
             // 
             // agua
             // 
             this.agua.HeaderText = "% Agua";
+            this.agua.MinimumWidth = 6;
             this.agua.Name = "agua";
             this.agua.ReadOnly = true;
+            this.agua.Width = 125;
             // 
             // pictureBox1
             // 
@@ -413,6 +445,10 @@
             this.btnImprimir.UseVisualStyleBackColor = true;
             this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
+            // printDocument2
+            // 
+            this.printDocument2.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument2_PrintPage);
+            // 
             // Inicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -424,7 +460,7 @@
             this.Controls.Add(this.btnImprimir);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.dataGridPatient);
-            this.Controls.Add(this.textHigh);
+            this.Controls.Add(this.txtHigh);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.txtFechaNacimiento);
             this.Controls.Add(this.label6);
@@ -475,7 +511,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtFechaNacimiento;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textHigh;
+        private System.Windows.Forms.TextBox txtHigh;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.DataGridView dataGridPatient;
         private System.Windows.Forms.PictureBox pictureBox1;
@@ -494,6 +530,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn metabolica;
         private System.Windows.Forms.DataGridViewTextBoxColumn agua;
         private System.Windows.Forms.Button btnImprimir;
+        private PrintDocument printDocument2;
     }
 }
 
